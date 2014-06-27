@@ -1,11 +1,11 @@
 node[:deploy].each do |app_name, deploy_config|
 	dir = "#{deploy_config[:deploy_to]}/current"	
 	message = "Syncing staging to github at #{Time.now.utc}"
-	system "git -C #{dir} add ."
-	system "git -C #{dir} add -u"
-	system "git -C #{dir} commit -m \"#{message}\""
-	system "git -C #{dir} pull origin test"
-	system "git -C #{dir} tag -a #{Time.now.to_i} -m \"Synced at #{Time.now.utc}\""
-	system "git -C #{dir} push --tags origin test"
+	system "cd #{dir} && git add ."
+	system "cd #{dir} && git add -u"
+	system "cd #{dir} && git commit -m \"#{message}\""
+	system "cd #{dir} && git pull origin test"
+	system "cd #{dir} && git tag -a #{Time.now.to_i} -m \"Synced at #{Time.now.utc}\""
+	system "cd #{dir} && git push --tags origin test"
 	puts "## Done!"
 end
