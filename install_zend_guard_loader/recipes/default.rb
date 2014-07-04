@@ -1,5 +1,5 @@
 cookbook_file "ZendGuardLoader.so" do
-  path "#{default['php']['ext_dir']}/ZendGuardLoader.so"
-  mode "0644"
+  path "#{node['php']['ext_dir']}/ZendGuardLoader.so"
+  mode "0755"
   action :create
 end
