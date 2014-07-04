@@ -4,10 +4,10 @@ cookbook_file "ZendGuardLoader.so" do
   action :create
 end
 
-template "#{node['php']['ext_conf_dir']}/zend_guard_loader.ini" do
+template "#{node['php']['ext_conf_dir']}/zend_loader.ini" do
   source node['php']['extension_template']
   owner 'root'
   group 'root'
   mode 00644
-  variables(node['zend_extension']['config_vars'])
+  variables(node['php']['zend_extension'])
 end
